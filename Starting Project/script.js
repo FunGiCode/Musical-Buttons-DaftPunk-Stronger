@@ -1,3 +1,4 @@
+//Importing Audio files==> new Audio("Src");
 const WORK_IT = new Audio("./audio/WORK_IT.wav");
 const MAKE_IT = new Audio("./audio/MAKE_IT.wav");
 const DO_IT = new Audio("./audio/DO_IT.wav");
@@ -15,8 +16,7 @@ const AFTER= new Audio("./audio/AFTER.wav");
 const WORK_IS= new Audio("./audio/WORK_IS.wav");
 const OVER= new Audio("./audio/OVER.wav");
 
-
-
+//Creating a keyboard map for the buttons
 const orderedAudioObject = {
     a: WORK_IT,
     b: MAKE_IT,

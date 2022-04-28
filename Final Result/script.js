@@ -15,8 +15,6 @@ const AFTER= new Audio("./audio/AFTER.wav");
 const WORK_IS= new Audio("./audio/WORK_IS.wav");
 const OVER= new Audio("./audio/OVER.wav");
 
-
-
 const orderedAudioObject = {
     a: WORK_IT,
     b: MAKE_IT,
@@ -35,23 +33,21 @@ const orderedAudioObject = {
     o: WORK_IS,
     p: OVER
 }
-const orderedAudioArray = Object.values(orderedAudioObject);
 
-const orderAudioBtns =document.querySelectorAll("ul button");
-
-function activateAudioOnClick(index) {
-    orderedAudioArray[index].play();
-}
-
-for (let x = 0; x < orderAudioBtns.length; x++){
-    const currentButton = orderAudioBtns[x];
-    currentButton.addEventListener("click", activateAudioOnClick.bind(this, x));
-   
+function activateAudioBasedOnKey(key) {
+    if(orderedAudioObject[key])
+    orderedAudioObject[key].play()
 }
 
 window.addEventListener("keydown", (e) => {
     const pressedKey = e.key.toLowerCase();
-     if (orderedAudioObject[pressedKey] != null) {
-         orderedAudioObject[pressedKey].play();
-    }      
+    activateAudioBasedOnKey(pressedKey)      
 })
+
+const musicalButtons = document.querySelectorAll("ul li button");
+
+for (let x = 0; x < musicalButtons.length; x++){
+    const currentButton = musicalButtons[x];
+    const key = currentButton.getAttribute("data-key");
+    currentButton.addEventListener("click", activateAudioBasedOnKey.bind(this,key));
+}
